@@ -21,13 +21,15 @@
         <tr>
           <th>Course Name</th>
           <th>Description</th>
+          <th></th>
           <th>Date Added</th>
           <th>Actions</th>
         </tr>
         {% for course in courses%}
         <tr>
           <td>{{course.name}}</td>
-          <td>{{course.description}}</td>
+          <td>{{course.description.content}}</td>
+          <td></td>
           <td>{{course.created_at}}</td>
           <td><a href='courses/destroy/{{course.id}}'>remove</a></td>
 

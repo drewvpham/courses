@@ -10,7 +10,8 @@ def index(request):
     return render(request, 'courses/index.html', context)
 
 def create(request):
-    Course.objects.create(name=request.POST['name'], description=request.POST['description'])
+    course=Course.objects.create(name=request.POST['name'])
+    Description.objects.create(content=request.POST['description'], course=course)
     return redirect('/')
 
 def confirmation(request, id):

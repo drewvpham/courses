@@ -8,12 +8,12 @@
     <h1>Are you sure you want to delete the following course?</h1>
     {%for x in course%}
     <p>Name: {{x.name}}</p>
-    <p>Description: {{x.description}}</p>
+    <p>Description: {{x.description.content}}</p>
 
     <form action='/' method='post'>
       {% csrf_token %}
       <input type=submit value='No!!'>
-  
+
     </form>
 
     <form action='/destroy/{{x.id}}' method='post'>
