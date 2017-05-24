@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .models import *
 
 
-# Create your views here.
 def index(request):
     courses=Course.objects.all().order_by('-id')
     context={
@@ -14,12 +13,15 @@ def create(request):
     Course.objects.create(name=request.POST['name'], description=request.POST['description'])
     return redirect('/')
 
-
 def confirmation(request, id):
-    Course.objects.filter(id=id).delete()
-    return render(request, 'courses/delete.html', context)
+    course=Course.objects.filter(id=id)
+    context={
+        'course': course
+    }
+    print context
+    return render(request, 'courses/destroy.html', context)
 
 
-def delete(request, id):
+def destroy(request, id):
     Course.objects.filter(id=id).delete()
     return redirect('/')
